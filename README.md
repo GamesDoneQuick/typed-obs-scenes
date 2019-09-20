@@ -81,3 +81,7 @@ Options:
 
 Missing required argument: input
 ```
+
+# License
+
+[MIT](LICENSE)
