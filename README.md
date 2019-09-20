@@ -2,6 +2,12 @@
 
 > Generate a d.ts file full of enums describing an OBS Scene Collection.
 
+## Table of Contents
+
+-   [Motivation](#motivation)
+-   [Installation](#installation)
+-   [Usage](#usage)
+
 ## Motivation
 
 We often need to write code which remotely controls one or more OBS Studio instances via `obs-websocket`. When doing this, it is common to need to reference specific Scene and Source names. This can be really dangerous, as it's easy to typo and these typos might go unnoticed until it is too late.
