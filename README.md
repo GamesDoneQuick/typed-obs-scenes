@@ -1,4 +1,4 @@
-# typed-obs-scenes
+# typed-obs-scenes [![npm](https://img.shields.io/npm/v/@gamesdonequick/typed-obs-scenes.svg)](https://www.npmjs.com/package/@gamesdonequick/typed-obs-scenes) [![Build Status](https://dev.azure.com/gamesdonequick/typed-obs-scenes/_apis/build/status/GamesDoneQuick.typed-obs-scenes?branchName=master)](https://dev.azure.com/gamesdonequick/typed-obs-scenes/_build/latest?definitionId=9&branchName=master)
 
 > Generate a d.ts file full of enums describing an OBS Scene Collection.
 
