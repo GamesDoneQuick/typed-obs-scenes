@@ -23,13 +23,16 @@ type SceneCollection = {
 
 export function generateTypes(sceneCollection: SceneCollection, codeCase: CodeCase): string {
 	const groups = generateEnum('Group', sceneCollection.groups, codeCase);
-	const sources = generateEnum('Source', sceneCollection.sources, codeCase);
+	const sources = generateEnum('Source', sceneCollection.sources.filter(source => source.id !== 'scene'), codeCase);
+	const scenes = generateEnum('Scene', sceneCollection.sources.filter(source => source.id === 'scene'), codeCase);
 	const transitions = generateEnum('Transition', sceneCollection.transitions, codeCase);
 	return prettier.format(
 		`
 		export ${groups}
 
 		export ${sources}
+
+		export ${scenes}
 
 		export ${transitions}
 	`,

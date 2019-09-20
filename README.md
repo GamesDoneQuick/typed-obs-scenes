@@ -12,7 +12,7 @@
 
 We often need to write code which remotely controls one or more OBS Studio instances via `obs-websocket`. When doing this, it is common to need to reference specific Scene and Source names. This can be really dangerous, as it's easy to typo and these typos might go unnoticed until it is too late.
 
-That's where this CLI tool comes in. It takes an OBS Scene Collection JSON file as input, and outputs a TypeScript `d.ts` typedef file with enums describing the Scenes, Sources, and Transitions present in that Collection. It looks like this (don't worry, you can use `UpperCamelCase` if you don't like `snake_case`):
+That's where this CLI tool comes in. It takes an OBS Scene Collection JSON file as input, and outputs a TypeScript `d.ts` typedef file with enums describing the Scenes, Sources, Groups, and Transitions present in that Collection. It looks like this (don't worry, you can use `UpperCamelCase` if you don't like `snake_case`):
 
 ```ts
 export const enum Group {
@@ -22,12 +22,19 @@ export const enum Group {
 }
 
 export const enum Source {
-	'main_stage_full_camera' = 'Main Stage Full Camera',
 	'layout_widescreen_3' = 'Layout Widescreen 3',
-	'widescreen_3' = 'Widescreen 3',
 	'layout_standard_4_ff_4_fe' = 'Layout Standard 4 FF4FE',
-	'standard_4_ff_4_fe' = 'Standard 4 FF4FE',
 	'layout_standard_2_sms' = 'Layout Standard 2 SMS',
+	'countdown_anim' = 'Countdown Anim',
+	'layout_ds_vertical' = 'Layout DS Vertical',
+	'closing_slate' = 'Closing Slate',
+}
+
+export const enum Scene {
+	'main_stage_full_camera' = 'Main Stage Full Camera',
+	'widescreen_3' = 'Widescreen 3',
+	'standard_4_ff_4_fe' = 'Standard 4 FF4FE',
+	'standard_2_sms' = 'Standard 2 SMS',
 }
 
 export const enum Transition {
@@ -62,7 +69,7 @@ npm i -g @gamesdonequick/typed-obs-scenes
     const obs = new OBSWebSocket();
     obs.connect({ address: 'localhost:4444', password: '$up3rSecretP@ssw0rd' }).then(() => {
     	obs.send('SetCurrentScene', {
-    		'scene-name': SceneCollection.Scenes.main_stage_full_camera,
+    		'scene-name': SceneCollection.Scene.main_stage_full_camera,
     	});
     });
     ```
