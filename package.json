@@ -1,0 +1,83 @@
+{
+  "name": "@gamesdonequick/typed-obs-scenes",
+  "version": "0.0.0-development",
+  "description": "Generate a d.ts file full of enums describing an OBS Scene Collection.",
+  "main": "dist/lib.js",
+  "scripts": {
+    "lint": "npm-run-all -s lint:*",
+    "lint:prettier": "prettier --list-different \"**/*.{ts,json,md,yml,html,js}\"",
+    "lint:eslint": "eslint \"**/*.{ts,html,js}\"",
+    "build": "tsc -p tsconfig.json",
+    "fix": "npm-run-all -s fix:*",
+    "fix:prettier": "prettier --write \"**/*.{ts,json,md,yml,html,js}\"",
+    "fix:eslint": "npm run lint:eslint -- --fix ",
+    "test": "npm run lint && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/GamesDoneQuick/typed-obs-scenes.git"
+  },
+  "keywords": [
+    "obs",
+    "typescript",
+    "types",
+    "typedef",
+    "enum"
+  ],
+  "author": "Games Done Quick LLC <engineering@gamesdonequick.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GamesDoneQuick/typed-obs-scenes/issues"
+  },
+  "homepage": "https://github.com/GamesDoneQuick/typed-obs-scenes#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "@gamesdonequick/eslint-config": "^1.0.2",
+    "@gamesdonequick/prettier-config": "^2.1.1",
+    "@supportclass/tsconfig-base": "^1.0.2",
+    "@types/lodash.camelcase": "^4.3.6",
+    "@types/lodash.snakecase": "^4.1.6",
+    "@types/node": "^12.7.5",
+    "@types/prettier": "^1.18.2",
+    "@types/yargs": "^13.0.2",
+    "eslint": "^6.4.0",
+    "husky": "^3.0.5",
+    "lint-staged": "^9.2.5",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
+    "semantic-release": "^15.13.24",
+    "tslib": "^1.10.0",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "lodash.camelcase": "^4.3.0",
+    "lodash.snakecase": "^4.1.1",
+    "yargs": "^14.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,json,md,yml,html,js}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,html,js}": [
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "typed-obs-scenes": "./dist/bin.js"
+  }
+}

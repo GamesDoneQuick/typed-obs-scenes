@@ -1,0 +1,21 @@
+variables:
+  - group: Publishing Secrets
+
+trigger:
+  - master
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+  - script: npm ci
+    displayName: 'Install npm dependencies'
+
+  - script: npm t
+    displayName: 'Run tests (well, lint and compile...)'
+
+  - script: npx semantic-release
+    displayName: 'Release'
+    env:
+      GH_TOKEN: $(GH_TOKEN)
+      NPM_TOKEN: $(NPM_TOKEN)

@@ -1,0 +1,12 @@
+{
+	"root": true,
+	"extends": [
+		"@gamesdonequick/eslint-config",
+		"@gamesdonequick/eslint-config/typescript"
+	],
+	"rules": {
+		"@typescript-eslint/camelcase": [
+			0
+		]
+	}
+}
