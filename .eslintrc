@@ -1,8 +1,9 @@
 {
 	"root": true,
 	"extends": [
-		"@gamesdonequick/eslint-config",
-		"@gamesdonequick/eslint-config/typescript"
+		"xo",
+		"xo-typescript",
+		"prettier"
 	],
 	"rules": {
 		"@typescript-eslint/camelcase": [
