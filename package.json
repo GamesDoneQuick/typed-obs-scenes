@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "npm-run-all -s lint:*",
     "lint:prettier": "prettier --list-different \"**/*.{ts,json,md,yml,html,js}\"",
-    "lint:eslint": "eslint \"**/*.{ts,html,js}\"",
+    "lint:eslint": "eslint ./src --ext .ts",
     "build": "npx tsc -p tsconfig.json",
     "fix": "npm-run-all -s fix:*",
     "fix:prettier": "prettier --write \"**/*.{ts,json,md,yml,html,js}\"",
@@ -31,13 +31,13 @@
   },
   "homepage": "https://github.com/GamesDoneQuick/typed-obs-scenes#readme",
   "devDependencies": {
-    "@commitlint/cli": "^8.2.0",
-    "@commitlint/config-conventional": "^8.2.0",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "@gamesdonequick/prettier-config": "^2.1.1",
-    "@supportclass/tsconfig-base": "^1.0.2",
+    "@supportclass/tsconfig-base": "^1.0.4",
     "@types/lodash": "^4.14.173",
-    "@types/node": "^12.7.5",
-    "@types/prettier": "^1.18.2",
+    "@types/node": "^14.17.6",
+    "@types/prettier": "^2.4.0",
     "@types/yargs": "^13.0.2",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
@@ -53,8 +53,8 @@
   },
   "dependencies": {
     "lodash": "^4.17.21",
-    "prettier": "^1.18.2",
-    "tslib": "^1.10.0",
+    "prettier": "^2.4.1",
+    "tslib": "^2.3.1",
     "yargs": "^14.0.0"
   },
   "husky": {
