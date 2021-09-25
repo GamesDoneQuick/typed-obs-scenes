@@ -9,7 +9,7 @@ import * as yargs from 'yargs';
 
 // Ours
 import { changeExtension } from './util';
-import { generateTypes, CodeCase } from './lib';
+import { generateTypes, CodeCase, SceneCollection } from './lib';
 
 const { argv } = yargs.options({
 	input: {
@@ -33,7 +33,7 @@ const sceneCollection = JSON.parse(
 	fs.readFileSync(argv.input, {
 		encoding: 'utf8',
 	}),
-);
+) as SceneCollection;
 const types = generateTypes(sceneCollection, argv.case as CodeCase);
 fs.writeFileSync(outputPath, types);
 

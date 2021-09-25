@@ -5,6 +5,7 @@
 		"xo-typescript",
 		"prettier"
 	],
+	"ignorePatterns": ["commitlint.config.js", "release.config.js"],
 	"rules": {
 		"@typescript-eslint/camelcase": [
 			0

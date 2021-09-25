@@ -14,7 +14,7 @@ export type CodeCase = 'camel' | 'snake';
 type Source = SceneItem;
 type Transition = SceneItem;
 type Group = SceneItem;
-type SceneCollection = {
+export type SceneCollection = {
 	groups: Group[];
 	sources: Source[];
 	transitions: Transition[];
