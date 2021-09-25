@@ -1,7 +1,5 @@
 // Packages
-import { uniqBy } from 'lodash';
-import camelCase from 'lodash/camelcase';
-import snakeCase from 'lodash/snakecase';
+import { uniqBy, camelCase, snakeCase } from 'lodash';
 import * as prettier from 'prettier';
 
 interface SceneItem {
@@ -24,12 +22,12 @@ export function generateTypes(sceneCollection: SceneCollection, codeCase: CodeCa
 	const groups = generateEnum('Group', sceneCollection.groups, codeCase);
 	const sources = generateEnum(
 		'Source',
-		sceneCollection.sources.filter(source => source.id !== 'scene'),
+		sceneCollection.sources.filter((source) => source.id !== 'scene'),
 		codeCase,
 	);
 	const scenes = generateEnum(
 		'Scene',
-		sceneCollection.sources.filter(source => source.id === 'scene'),
+		sceneCollection.sources.filter((source) => source.id === 'scene'),
 		codeCase,
 	);
 	const transitions = generateEnum('Transition', sceneCollection.transitions, codeCase);
@@ -51,16 +49,15 @@ export function generateTypes(sceneCollection: SceneCollection, codeCase: CodeCa
 	);
 }
 
+function capitalCamelCase(str: string): string {
+	const casedKey = `${camelCase(str)}`;
+	return `${casedKey.charAt(0).toUpperCase()}${casedKey.slice(1)}`;
+}
+
 function generateEnum(enumName: string, items: Array<Group | Source | Transition>, codeCase: CodeCase): string {
-	const casingFn =
-		codeCase === 'camel'
-			? (str: string): string => {
-					const casedKey = `${camelCase(str)}`;
-					return `${casedKey.charAt(0).toUpperCase()}${casedKey.slice(1)}`;
-			  }
-			: snakeCase;
-	items = uniqBy(items, item => casingFn(item.name));
-	const lines: string[] = items.map(item => `'${casingFn(item.name)}' = '${item.name}',`);
+	const casingFn = codeCase === 'camel' ? capitalCamelCase : snakeCase;
+	items = uniqBy(items, (item) => casingFn(item.name));
+	const lines: string[] = items.map((item) => `'${casingFn(item.name)}' = '${item.name}',`);
 	return `const enum ${enumName} {
 	${lines.join('\n')}
 }`;
