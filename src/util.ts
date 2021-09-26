@@ -1,3 +1,4 @@
+/** Changes the extension of an existing filename, and returns the new filename */
 export function changeExtension(filename: string, newExtension: string): string {
 	const extStartIndex = filename.lastIndexOf('.');
 
